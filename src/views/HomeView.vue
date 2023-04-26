@@ -3,6 +3,7 @@ import DataTable from 'datatables.net-vue3'
 import DataTablesCore from 'datatables.net-bs5';
 import 'datatables.net-select';
 import 'datatables.net-responsive';
+import { ref } from 'vue';
 DataTable.use(DataTablesCore);
 
 const columns = [
@@ -14,7 +15,9 @@ const columns = [
   { data: 'salary' },
 ];
 
-const data = [
+
+
+const data = ref([
   {
     "id": "1",
     "name": "Tiger Nixon",
@@ -528,13 +531,27 @@ const data = [
     "office": "New York",
     "extn": "4226"
   }
-]
+])
 
 const options = {
   responsive: true,
   select: true,
 };
+
+const append = () => {
+  console.log('addd')
+  data.value.push({
+    "id": "1",
+    "name": "Tiger Nixon",
+    "position": "System Architect",
+    "salary": "$320,800",
+    "start_date": "2011/04/25",
+    "office": "Edinburgh",
+    "extn": "5421"
+  });
+}
 </script>
+
 
 <template>
   <div class="container">
@@ -543,8 +560,8 @@ const options = {
     <code>npm init vue@latest</code>
     <br>
     <code>
-          npm install --save datatables.net-vue3
-      </code>
+                npm install --save datatables.net-vue3
+            </code>
     <br>
     <code>npm install --save datatables.net-select datatables.net-responsive</code>
     <br>
@@ -572,7 +589,7 @@ const columns = [
 @import 'datatables.net-bs5';
 </style>`
     }}</code></pre>
-
+    <button @click="append">Add</button>
     <div class="bg-light p-4 rounded">
       <DataTable :data="data" :columns="columns" :options="options" class="display table table-hover table-striped">
         <thead>
