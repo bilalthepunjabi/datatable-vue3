@@ -1,7 +1,8 @@
 <script setup>
 import DataTable from 'datatables.net-vue3'
 import DataTablesCore from 'datatables.net-bs5';
-
+import 'datatables.net-select';
+import 'datatables.net-responsive';
 DataTable.use(DataTablesCore);
 
 const columns = [
@@ -528,13 +529,52 @@ const data = [
     "extn": "4226"
   }
 ]
+
+const options = {
+  responsive: true,
+  select: true,
+};
 </script>
 
 <template>
   <div class="container">
     <h3>Sample Datatable in Vue3 + Bootstrap</h3>
+    <h4>Installation :: </h4>
+    <code>npm init vue@latest</code>
+    <br>
+    <code>
+          npm install --save datatables.net-vue3
+      </code>
+    <br>
+    <code>npm install --save datatables.net-select datatables.net-responsive</code>
+    <br>
+    <code>npm install --save datatables.net-bs5</code>
+
+    <h4>Usage :: </h4>
+    <pre><code>{{ `<script setup lang="ts">
+import DataTable from 'datatables.net-vue3';
+import DataTablesCore from 'datatables.net-bs5';
+ 
+DataTable.use(DataTablesCore);
+ 
+const columns = [
+  { data: 'name' },
+  { data: 'position' },
+  { data: 'office' },
+  { data: 'extn' },
+  { data: 'start_date' },
+  { data: 'salary' },
+];
+</script>
+ 
+<style>
+@import 'bootstrap';
+@import 'datatables.net-bs5';
+</style>`
+    }}</code></pre>
+
     <div class="bg-light p-4 rounded">
-      <DataTable :data="data" :columns="columns" class="display table table-hover table-striped">
+      <DataTable :data="data" :columns="columns" :options="options" class="display table table-hover table-striped">
         <thead>
           <tr>
             <th>Name</th>
