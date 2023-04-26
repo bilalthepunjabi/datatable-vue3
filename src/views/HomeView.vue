@@ -535,6 +535,26 @@ const data = [
     <h3>Sample Datatable in Vue3 + Bootstrap</h3>
     <div class="bg-light p-4 rounded">
       <DataTable :data="data" :columns="columns" class="display table table-hover table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Extn.</th>
+            <th>Start date</th>
+            <th>Salary</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Extn.</th>
+            <th>Start date</th>
+            <th>Salary</th>
+          </tr>
+        </tfoot>
       </DataTable>
     </div>
   </div>
